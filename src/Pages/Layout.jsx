@@ -3,7 +3,7 @@ const axios = require('axios');
 
 export default function Layout() {
 
-    const [Buscaapi, setBuscaapi] = useState()
+    const [buscaapi, setBuscaapi] = useState()
 
     // useEffect(() => {
     //     axios.get("https://viacep.com.br/ws/29934738/json/")
@@ -12,7 +12,7 @@ export default function Layout() {
 
     // return (
     //     <div>
-    //         <p>{Buscaapi?.cep}</p>
+    //         <p>{buscaapi?.cep}</p>
     //     </div>
     // ) // API PEGANDO A INFOS QUANDO EXISTE APENAS 1 OBJETO
 
@@ -23,7 +23,7 @@ export default function Layout() {
 
     return (
         <div>
-            {Buscaapi?.map(printresposta => (
+            {buscaapi?.map(printresposta => (
                 <li key={printresposta.id}>
                     <div>{printresposta.name}</div>
                 </li>
