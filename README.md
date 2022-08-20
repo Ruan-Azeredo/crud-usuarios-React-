@@ -1,14 +1,15 @@
 # CRUD de usuarios com React que consome API
 ## API
+### Método GET
 Para a relação com a API foi utilizado o Axios
-### Hooks
+#### Hooks
 - Primeiro é definido o primeiro estado *[buscaapei, setBuscaapi]*, com a utilização do hook *useState()*.
 - Em seguinda é setado o efeito utilizando o *useEffect()*, que vai dizer o que deve ser executado a cada chamada, como não existem parametros de chamada do *useEffect()*, logo irá chamar apanas quando a página for atualizada.
 - Como o que queremos executar dentro do *useEffect()* é a chamada da API, então criaremos uma arrowfunction que vai conter a ação de chamada.
 ```JavaScript
 const [buscaapi, setBuscaapi] = useState()
 ```
-### Axios
+#### Axios
 - A ação de chamada vai ocorrer por meio do axios, utilizando sua respectiva sintaxe.
 - no *.then* existirá uma arrowfunction que utilizando o *setBuscaapi*, vai mudar a variavel buscaapei em função da *response.data*.
 - Dentro do retorno o utiliza-se uma arrowfunction com com o *.map*, que tem a função de percorrer o vetor, neste caso estará percorrendo o *response.data*, que recebe o nome de *printresposta*.
@@ -18,7 +19,7 @@ useEffect(() => {
     .then((response) => setBuscaapi(response.data))
 }, [])
 ```
-### Chave de impressão
+#### Chave de impressão
 - Para definir o laço, utiliza-se o *key*, neste exemplo o *key* irá repetir o que está dentro da <li> percorrendo os *id*s que encontrar.
 ```JavaScript
 {buscaapi?.map(printresposta => (
