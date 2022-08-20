@@ -1,6 +1,6 @@
 # CRUD de usuarios com React que consome API
 ## API
-Para a relação com a API foi utilizado o Axios
+Para a relação com a API foi utilizado o Axios.
 ### Método GET
 #### Hooks
 - Primeiro é definido o primeiro estado *[buscaapei, setBuscaapi]*, com a utilização do hook *useState()*.
@@ -36,7 +36,7 @@ useEffect(() => {
     "email": "maria@gmail.com"
 }
 ```
-- Para tal precisa-se criar uma entrada para esses dados, coletar esses valores e e quando for acionado o botão, deve-se enviar o array com as informações para a API
+- Para tal precisa-se criar uma entrada para esses dados, coletar esses valores e e quando for acionado o botão, deve-se enviar o array com as informações para a API.
 #### Hooks
 - Para auxiliar neste processo foram criados os estados:
 ```JavaScript
