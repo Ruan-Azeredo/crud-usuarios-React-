@@ -103,7 +103,7 @@ const getArray = (info) => {
 ```JavaScript
 const [data, setData] = useState({})
 ```
-#### Model
+#### Modal
 - Para o uso deste método e atualização do método Post, utiliza-se a lib `react-modal`, que vai gerar os models.
 - ##### React Modal: https://github.com/reactjs/react-modal
 ```bash
@@ -138,3 +138,6 @@ setIsOpen(false)
 ```JavaScript
 <UpdateModel printresposta={printresposta}/>
 ```
+### Método DELETE
+- Este método foi feito de maneira muito semelhante ao método put, porem um pouco mais simples, por que não precias de novas informações para adicionar
+- Por este motivo o model recebeu o nome de *DeleteWarning* já que é um aviso de confirmação para deletar o usuario
