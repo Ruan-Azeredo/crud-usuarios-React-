@@ -110,7 +110,7 @@ const [data, setData] = useState({})
 npm install --save react-modal
 ```
 - Foi utilizado o fomato proposto pela documentação.
-- Vale ressaltar que quando o botão de Update é clicado, deve-se chamar *getArray()* e *openModal()*, logo chama-se *openModal()* no dim da função *getArray()*
+- Vale ressaltar que quando o botão de Update é clicado, deve-se chamar *getArray()* e *openModal()*, logo chama-se *openModal()* no dim da função *getArray()*.
 ```JavaScript
 const [modalIsOpen, setIsOpen] = useState(false);
 const [data, setData] = useState({})
