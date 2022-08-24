@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import CreateModel from "../Components/CreateModel";
 import UpdateModel from '../Components/UpdateModel';
 import create from "../functions/create";
 const axios = require('axios');
@@ -7,8 +8,8 @@ export default function Layout() {
 
     const [buscaapi, setBuscaapi] = useState()
 
-    const [namevalue, setNamevalue] = useState()
-    const [emailvalue, setEmailvalue] = useState()
+    // const [namevalue, setNamevalue] = useState()
+    // const [emailvalue, setEmailvalue] = useState()
 
     // useEffect(() => {
     //     axios.get("https://viacep.com.br/ws/29934738/json/")
@@ -26,18 +27,10 @@ export default function Layout() {
         .then((response) => setBuscaapi(response.data))
     }, [])
 
-    const getName = (event) => setNamevalue(event.target.value)
-    const getEmail = (event) => setEmailvalue(event.target.value)
-
     return (
         <div>
             <div>
-                <form action="">
-                    <p>Adicione as informações para criar um usuario</p>
-                    <input type="text" name="name" placeholder="nome" required onChange={getName}/>
-                    <input type="text" name="email" placeholder="email" required onChange={getEmail}/>
-                    <button type="submit" onClick={() => create(namevalue, emailvalue)}>Criar Usuario</button>
-                </form>
+                <CreateModel/>
             </div>
             {buscaapi?.map(printresposta => (
                 <li key={printresposta.id}>
