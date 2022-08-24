@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-import CreateModel from "../Components/CreateModal";
+import CreateModal from "../Components/CreateModal";
 import DeleteWarning from "../Components/DeleteWarnig";
-import UpdateModel from '../Components/UpdateModal';
+import UpdateModal from '../Components/UpdateModal';
+import ShowModal from "../Components/ShowModal";
 const axios = require('axios');
 
 export default function Layout() {
@@ -38,7 +39,8 @@ export default function Layout() {
                         <div className="infos-content name">{printresposta.name}</div>
                         <div className="infos-content email">{printresposta.email}</div>
                     </div>
-                    <UpdateModal printresposta={printresposta} />
+                    <ShowModal printresposta={printresposta}/>
+                    <UpdateModal printresposta={printresposta}/>
                     <DeleteWarning printresposta={printresposta}/>
                 </li>
             ))}
