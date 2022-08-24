@@ -71,3 +71,70 @@ const submit = () => {
 ```JavaScript
 <button type="submit" onClick={() => submit()}>Criar Usuario</button>
 ```
+### Método PUT
+#### Função Update
+- Este método está relacionado com a função de Update do crud, que é precisa identificar o Id o qual se deja editar e as novas informações que devem ser alteradas, a função que faz essa relação com a Api fica da seguinte forma:
+```JavaScript
+export default function update(data, namevalue, emailvalue) {
+
+    const id = data.id
+    console.log({namevalue, emailvalue, id})
+
+    axios.put(`http://localhost:3001/users/${id}`, {
+        name: namevalue,
+        email: emailvalue
+    })
+    document.location.reload()
+}
+```
+- As variaveis *namevalue* e *emailvalue* são do hook já declarado anteriormente. Já o *Id* precisa ser identificado quando clicamos no botão de Update, para tal, se criou uma função que pega as informações da chave do laço, no caso o *printresposta*, essa informação é passada como parametro *info*, e nela se pega as informações do item especifico que queremos editar.
+#### Define *Data*
+```JavaScript
+const getArray = (info) => {
+        const id = info.printresposta.id
+        const name = info.printresposta.name
+        const email = info.printresposta.email
+
+        setData({ id, name, email })
+    }
+```
+#### Hook
+- O arrey de informações é setado atravez de um hook:
+```JavaScript
+const [data, setData] = useState({})
+```
+#### Model
+- Para o uso deste método e atualização do método Post, utiliza-se a lib `react-modal`, que vai gerar os models.
+- ##### React Modal: https://github.com/reactjs/react-modal
+```bash
+npm install --save react-modal
+```
+- Foi utilizado o fomato proposto pela documentação.
+- Vale ressaltar que quando o botão de Update é clicado, deve-se chamar *getArray()* e *openModal()*, logo chama-se *openModal()* no dim da função *getArray()*
+```JavaScript
+const [modalIsOpen, setIsOpen] = useState(false);
+const [data, setData] = useState({})
+
+const openModal = () => {
+setIsOpen(true);
+}
+
+const closeModal = () => {
+setIsOpen(false)
+}
+
+<button onClick={() => getArray(printresposta)}>Update</button>
+<Modal isOpen={modalIsOpen} onRequestClose={closeModal} data={data}>
+    <div>
+        <input defaultValue={data.name} onChange={getName}></input>
+        <input defaultValue={data.email} onChange={getEmail}></input>
+    </div>
+        <button
+            onClick={() => update(data, namevalue, emailvalue)}>Submit</button>
+    <button onClick={closeModal}>close</button>
+</Modal>
+```
+- É importante ressaltar que quando o Model está em um componente, este precisa receber como parametro o *printresposta*, e deve-se definir os hooks para pegar os valores de nome e email novamente.
+```JavaScript
+<UpdateModel printresposta={printresposta}/>
+```
