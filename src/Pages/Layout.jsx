@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import CreateModel from "../Components/CreateModel";
+import DeleteWarning from "../Components/DeleteWarnig";
 import UpdateModel from '../Components/UpdateModel';
-import create from "../functions/create";
 const axios = require('axios');
 
 export default function Layout() {
@@ -38,7 +38,8 @@ export default function Layout() {
                         <div className="infos-content name">{printresposta.name}</div>
                         <div className="infos-content email">{printresposta.email}</div>
                     </div>
-                    <UpdateModel printresposta={printresposta}/>
+                    <UpdateModel printresposta={printresposta} />
+                    <DeleteWarning printresposta={printresposta}/>
                 </li>
             ))}
         </div> // API PEGANDO INFO PERCORRENDO ENTRE OBJETOS
