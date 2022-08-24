@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
-import CreateModel from "../Components/CreateModel";
+import CreateModel from "../Components/CreateModal";
 import DeleteWarning from "../Components/DeleteWarnig";
-import UpdateModel from '../Components/UpdateModel';
+import UpdateModel from '../Components/UpdateModal';
 const axios = require('axios');
 
 export default function Layout() {
@@ -30,7 +30,7 @@ export default function Layout() {
     return (
         <div>
             <div>
-                <CreateModel/>
+                <CreateModal/>
             </div>
             {buscaapi?.map(printresposta => (
                 <li key={printresposta.id}>
@@ -38,7 +38,7 @@ export default function Layout() {
                         <div className="infos-content name">{printresposta.name}</div>
                         <div className="infos-content email">{printresposta.email}</div>
                     </div>
-                    <UpdateModel printresposta={printresposta} />
+                    <UpdateModal printresposta={printresposta} />
                     <DeleteWarning printresposta={printresposta}/>
                 </li>
             ))}

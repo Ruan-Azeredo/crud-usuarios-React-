@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import React, { useState } from "react"
 import create from "../functions/create";
 
-export default function () {
+export default function CreateModal() {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 

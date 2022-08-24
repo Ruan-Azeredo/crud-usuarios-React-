@@ -2,7 +2,7 @@ import Modal from 'react-modal'
 import React, { useState} from "react"
 import update from '../functions/update';
 
-export default function UpdateModel(printresposta) {
+export default function UpdateModal(printresposta) {
 
     const [modalIsOpen, setIsOpen] = useState(false);
     const [data, setData] = useState({})
