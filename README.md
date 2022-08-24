@@ -2,8 +2,10 @@
 ## Figma
 O design Projetado para a aparencia e estilização do CRUD:
 </br></br>
-<img height="280em" align="center" src="https://user-images.githubusercontent.com/90003046/186307817-9277fade-7013-4dd2-a214-a1f8d797ed4a.png"/>
-<img height="280em" align="center" src="https://user-images.githubusercontent.com/90003046/186308572-2865d46d-7da5-4810-a02e-b6be4b7eaf14.png"/>
+<div align="center">
+<img height="280em" src="https://user-images.githubusercontent.com/90003046/186307817-9277fade-7013-4dd2-a214-a1f8d797ed4a.png"/>
+<img height="280em" src="https://user-images.githubusercontent.com/90003046/186308572-2865d46d-7da5-4810-a02e-b6be4b7eaf14.png"/>
+</div>
 ## API
 Para a relação com a API foi utilizado o Axios.
 ### Método GET
