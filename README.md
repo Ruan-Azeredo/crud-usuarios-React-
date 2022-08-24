@@ -139,5 +139,8 @@ setIsOpen(false)
 <UpdateModel printresposta={printresposta}/>
 ```
 ### Método DELETE
-- Este método foi feito de maneira muito semelhante ao método put, porem um pouco mais simples, por que não precias de novas informações para adicionar
-- Por este motivo o model recebeu o nome de *DeleteWarning* já que é um aviso de confirmação para deletar o usuario
+- Este método foi feito de maneira muito semelhante ao método put, porem um pouco mais simples, por que não precias de novas informações para adicionar.
+- Por este motivo o model recebeu o nome de *DeleteWarning* já que é um aviso de confirmação para deletar o usuario.
+### Show Infos
+- Foi adicionado o botão com o modal de *ShowModal*, que basicamente vai mostrar as informações detalhadas do usuario. Como neste projeto as informações já estão todas mostradas no *li* não altera muito, porem em um prjeto maior este modal é bem importante.
+- O modal foi baseado no de update, porem mais simples por não precisar pegar novos valores, apenas mostrar em inputs desabilitados.
