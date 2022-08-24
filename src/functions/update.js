@@ -9,5 +9,6 @@ export default function update(data, namevalue, emailvalue) {
         name: namevalue,
         email: emailvalue
     })
+    
     document.location.reload()
 }
