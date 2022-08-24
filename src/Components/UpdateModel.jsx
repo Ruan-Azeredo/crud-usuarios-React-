@@ -1,5 +1,5 @@
 import Modal from 'react-modal'
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import update from '../functions/update';
 
 export default function UpdateModel(printresposta) {
@@ -40,8 +40,7 @@ export default function UpdateModel(printresposta) {
                     <input defaultValue={data.email} onChange={getEmail}></input>
                     <input value={data.id} disabled/>
                 </div>
-                    <button
-                        onClick={() => update(data, namevalue, emailvalue)}>Submit</button>
+                <button onClick={() => update(data, namevalue, emailvalue)}>Submit</button>
                 <button onClick={closeModal}>close</button>
             </Modal>
         </>
