@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"
+import UpdateModel from '../Components/UpdateModel';
+import create from "../functions/create";
 const axios = require('axios');
 
 export default function Layout() {
@@ -24,13 +26,6 @@ export default function Layout() {
         .then((response) => setBuscaapi(response.data))
     }, [])
 
-    const submit = () => {
-        axios.post("http://localhost:3001/users/create", {  
-            name: namevalue,
-            email: emailvalue
-        })
-    }
-
     const getName = (event) => setNamevalue(event.target.value)
     const getEmail = (event) => setEmailvalue(event.target.value)
 
@@ -41,7 +36,7 @@ export default function Layout() {
                     <p>Adicione as informações para criar um usuario</p>
                     <input type="text" name="name" placeholder="nome" required onChange={getName}/>
                     <input type="text" name="email" placeholder="email" required onChange={getEmail}/>
-                    <button type="submit" onClick={() => submit()}>Criar Usuario</button>
+                    <button type="submit" onClick={() => create(namevalue, emailvalue)}>Criar Usuario</button>
                 </form>
             </div>
             {buscaapi?.map(printresposta => (
@@ -50,6 +45,7 @@ export default function Layout() {
                         <div className="infos-content name">{printresposta.name}</div>
                         <div className="infos-content email">{printresposta.email}</div>
                     </div>
+                    <UpdateModel printresposta={printresposta}/>
                 </li>
             ))}
         </div> // API PEGANDO INFO PERCORRENDO ENTRE OBJETOS
