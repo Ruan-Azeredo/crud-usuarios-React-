@@ -38,6 +38,7 @@ export default function UpdateModel(printresposta) {
                 <div>
                     <input defaultValue={data.name} onChange={getName}></input>
                     <input defaultValue={data.email} onChange={getEmail}></input>
+                    <input value={data.id} disabled/>
                 </div>
                     <button
                         onClick={() => update(data, namevalue, emailvalue)}>Submit</button>
