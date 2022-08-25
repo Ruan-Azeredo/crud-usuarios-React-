@@ -6,20 +6,6 @@ export default function Layout() {
 
     const [buscaapi, setBuscaapi] = useState()
 
-    // const [namevalue, setNamevalue] = useState()
-    // const [emailvalue, setEmailvalue] = useState()
-
-    // useEffect(() => {
-    //     axios.get("https://viacep.com.br/ws/29934738/json/")
-    //         .then((response) => setBuscaapi(response.data))
-    // }, [])
-
-    // return (
-    //     <div>
-    //         <p>{buscaapi?.cep}</p>
-    //     </div>
-    // ) // API PEGANDO A INFOS QUANDO EXISTE APENAS 1 OBJETO
-
     useEffect(() => {
         axios.get("http://localhost:3001/users/all")
         .then((response) => setBuscaapi(response.data))
@@ -41,6 +27,6 @@ export default function Layout() {
                     <ModalTemplate printresposta={printresposta} acao='delete' />
                 </li>
             ))}
-        </div> // API PEGANDO INFO PERCORRENDO ENTRE OBJETOS
+        </div>
     )
 }
