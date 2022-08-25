@@ -5,4 +5,5 @@ export default function create(namevalue, emailvalue){
         name: namevalue,
         email: emailvalue
     })
+    document.location.reload()
 }
