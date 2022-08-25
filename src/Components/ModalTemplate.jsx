@@ -70,7 +70,7 @@ export default function ModalTemplate(params) {
                         flex flex-row
                         `}>
                     <div>
-                        <LabelComponent hidden={acao == 'delete' ? true : false}>
+                        <LabelComponent hidden={acao == 'delete' ? true : false} title={'NAME'}>
                         <InputComponent
                                 defaultValue={acao == 'update' || 'info' ? data.name : null}
                                 onChange={acao == 'update' || 'create' ? getName : null}
@@ -78,7 +78,7 @@ export default function ModalTemplate(params) {
                                 hidden={acao == 'delete' ? true : false}
                             />
                         </LabelComponent>
-                        <LabelComponent hidden={acao == 'delete' ? true : false}>
+                        <LabelComponent hidden={acao == 'delete' ? true : false} title={'EMAIL'}>
                             <InputComponent
                                 defaultValue={acao == 'update' || 'info' ? data.email : null}
                                 onChange={acao == 'update' || 'create' ? getEmail : null}
