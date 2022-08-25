@@ -78,7 +78,6 @@ const submit = () => {
 export default function update(data, namevalue, emailvalue) {
 
     const id = data.id
-    console.log({namevalue, emailvalue, id})
 
     axios.put(`http://localhost:3001/users/${id}`, {
         name: namevalue,
@@ -142,7 +141,7 @@ setIsOpen(false)
 - Este método foi feito de maneira muito semelhante ao método put, porem um pouco mais simples, por que não precias de novas informações para adicionar.
 - Por este motivo o model recebeu o nome de *DeleteWarning* já que é um aviso de confirmação para deletar o usuario.
 ### Show Infos
-- Foi adicionado o botão com o modal de *ShowModal*, que basicamente vai mostrar as informações detalhadas do usuario. Como neste projeto as informações já estão todas mostradas no *li* não altera muito, porem em um prjeto maior este modal é bem importante.
+- Foi adicionado o botão com o modal de *ShowModal*, que basicamente vai mostrar as informações detalhadas do usuario.
 - O modal foi baseado no de update, porem mais simples por não precisar pegar novos valores, apenas mostrar em inputs desabilitados.
 ## Otimização dos Modals
 - Como existiam varias funções e itens iguais em todos os Modals, se definiu um componente *ModalTemplate()*, que recebe como parametros o *printresposta* e a *acao*, que é utilizada em algumas codicionais que para definir algumas propriedades dos inputs e quais botões devem aparecer, levando as suas respectivas funções, create, update e dalete.
