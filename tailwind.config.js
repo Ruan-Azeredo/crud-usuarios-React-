@@ -6,7 +6,21 @@ module.exports = {
     "./src/Components/TagComponents/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        mainColor: '#8A34CE',
+        secondColor: '#AF34CE',
+        white: {
+          50: '#FFFFFF',
+          100: '#EBE2F1'
+        },
+        textColor: '#666666'
+      },
+      fontFamily: {
+        mainFont: 'Inter',
+        secondFont: 'Inria Sans'
+      },
+    },
   },
   plugins: [],
 }
