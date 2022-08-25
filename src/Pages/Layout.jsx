@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react"
-import CreateModal from "../Components/CreateModal";
-import DeleteWarning from "../Components/DeleteWarnig";
-import UpdateModal from '../Components/UpdateModal';
-import ShowModal from "../Components/ShowModal";
+import ModalTemplate from "../Components/ModalTemplate";
 const axios = require('axios');
 
 export default function Layout() {
@@ -31,7 +28,7 @@ export default function Layout() {
     return (
         <div>
             <div>
-                <CreateModal/>
+            <ModalTemplate acao='create' />
             </div>
             {buscaapi?.map(printresposta => (
                 <li key={printresposta.id}>
@@ -39,9 +36,9 @@ export default function Layout() {
                         <div className="infos-content name">{printresposta.name}</div>
                         <div className="infos-content email">{printresposta.email}</div>
                     </div>
-                    <ShowModal printresposta={printresposta}/>
-                    <UpdateModal printresposta={printresposta}/>
-                    <DeleteWarning printresposta={printresposta}/>
+                    <ModalTemplate printresposta={printresposta} acao='info' />
+                    <ModalTemplate printresposta={printresposta} acao='update' />
+                    <ModalTemplate printresposta={printresposta} acao='delete' />
                 </li>
             ))}
         </div> // API PEGANDO INFO PERCORRENDO ENTRE OBJETOS
