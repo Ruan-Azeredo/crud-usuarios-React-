@@ -3,6 +3,15 @@ import React, { useState } from "react"
 import update from '../functions/update';
 import create from "../functions/create";
 import deletes from '../functions/deletes';
+import InputComponent from './TagComponents/InputComponent';
+import IdComponent from './TagComponents/IdComponent';
+import ButtonComponent from './TagComponents/ButtonComponent';
+import LabelComponent from './TagComponents/LabelComponent';
+import ModalComponent from './TagComponents/ModalComponent';
+import FooterModalComponent from './TagComponents/FooterModalComponent';
+import ModalButtonComponent from './TagComponents/ModalButtonComponent';
+import TitleModalComponent from './TagComponents/TitleModalComponent';
+import AvisoDeleteComponent from './TagComponents/AvisoDeleteComponent';
 
 export default function ModalTemplate(params) {
 
@@ -11,6 +20,20 @@ export default function ModalTemplate(params) {
 
     const [namevalue, setNamevalue] = useState()
     const [emailvalue, setEmailvalue] = useState()
+
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          backgroundColor: '#EBE2F1',
+          width: '1000px',
+          padding: '0'
+        },
+    };
 
 
     const openModal = () => {
@@ -37,47 +60,58 @@ export default function ModalTemplate(params) {
 
     return (
         <>
-            <button onClick={acao != 'create' ? () => getArray(params) : () => openModal()}>{acao}</button>
-            <Modal isOpen={modalIsOpen} onRequestClose={closeModal} data={data}>
-                <div>
-                    <input className='input-name'
-                        defaultValue={acao == 'update' || 'info' ? data.name : null}
-                        onChange={acao == 'update' || 'create' ? getName : null}
-                        disabled={acao == 'info' ? true : false}
-                        hidden={acao == 'delete' ? true : false}
-                    />
-
-                    <input className='input-email'
-                        defaultValue={acao == 'update' || 'info' ? data.email : null}
-                        onChange={acao == 'update' || 'create' ? getEmail : null}
-                        disabled={acao == 'info' ? true : false}
-                        hidden={acao == 'delete' ? true : false}
-                    />
-
-                    <input className='input-id'
-                        value={acao == 'update' || 'info' ? data.id : null}
-                        hidden={data.id && acao != 'delete' ? false : true}
-                        disabled/>
+            <ButtonComponent
+                onClick={acao != 'create' ? () => getArray(params) : () => openModal()}
+                value={acao.toUpperCase()}
+            ></ButtonComponent>
+            <ModalComponent isOpen={modalIsOpen} onRequestClose={closeModal} data={data} style={customStyles}>
+                <TitleModalComponent value={acao.toUpperCase()} hidden={acao != 'delete' ? null : 'hidden'}/>
+                <div className={`
+                        flex flex-row
+                        `}>
+                    <div>
+                        <LabelComponent hidden={acao == 'delete' ? true : false}>
+                        <InputComponent
+                                defaultValue={acao == 'update' || 'info' ? data.name : null}
+                                onChange={acao == 'update' || 'create' ? getName : null}
+                                disabled={acao == 'info' ? true : false}
+                                hidden={acao == 'delete' ? true : false}
+                            />
+                        </LabelComponent>
+                        <LabelComponent hidden={acao == 'delete' ? true : false}>
+                            <InputComponent
+                                defaultValue={acao == 'update' || 'info' ? data.email : null}
+                                onChange={acao == 'update' || 'create' ? getEmail : null}
+                                disabled={acao == 'info' ? true : false}
+                                hidden={acao == 'delete' ? true : false}
+                            />
+                        </LabelComponent>
+                    </div>
+                    <IdComponent
+                        value={data.id}
+                        show={data.id && acao != 'delete' ? null : 'hidden'}/>
                     
                 </div>
-                <p hidden={acao == 'delete' ? false : true}>Tem certeza que deseja deletar este Usuario?</p>
-                <button
-                    onClick={() => create(namevalue, emailvalue)}
-                    hidden={acao == 'create' ? false : true}
-                >Criar Usuario</button>
+                <AvisoDeleteComponent hidden={acao == 'delete' ? null : 'hidden'}/>
+                <FooterModalComponent>
+                    <ModalButtonComponent
+                        onClick={() => create(namevalue, emailvalue)}
+                        hidden={acao == 'create' ? false : true}
+                    >CREATE USER</ModalButtonComponent>
 
-                <button
-                    onClick={() => update(data, namevalue, emailvalue)}
-                    hidden={acao == 'update' ? false : true}
-                >Atualizar Usuario</button>
+                    <ModalButtonComponent
+                        onClick={() => update(data, namevalue, emailvalue)}
+                        hidden={acao == 'update' ? false : true}
+                    >UPDATE USER</ModalButtonComponent>
 
-                <button
-                    onClick={() => deletes(data)}
-                    hidden={acao == 'delete' ? false : true}
-                >Deletar</button>
+                    <ModalButtonComponent
+                        onClick={() => deletes(data)}
+                        hidden={acao == 'delete' ? false : true}
+                    >DELETE</ModalButtonComponent>
 
-                <button onClick={closeModal}>close</button>
-            </Modal>
+                    <ModalButtonComponent onClick={closeModal}>CLOSE</ModalButtonComponent>
+                </FooterModalComponent>
+            </ModalComponent>
         </>
     )
 }
