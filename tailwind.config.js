@@ -18,7 +18,7 @@ module.exports = {
       },
       fontFamily: {
         mainFont: 'Inter',
-        secondFont: 'Inria Sans'
+        secondFont: 'InriaSans'
       },
     },
   },
