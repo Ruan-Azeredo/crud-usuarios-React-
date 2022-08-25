@@ -144,3 +144,80 @@ setIsOpen(false)
 ### Show Infos
 - Foi adicionado o botão com o modal de *ShowModal*, que basicamente vai mostrar as informações detalhadas do usuario. Como neste projeto as informações já estão todas mostradas no *li* não altera muito, porem em um prjeto maior este modal é bem importante.
 - O modal foi baseado no de update, porem mais simples por não precisar pegar novos valores, apenas mostrar em inputs desabilitados.
+## Otimização dos Modals
+- Como existiam varias funções e itens iguais em todos os Modals, se definiu um componente *ModalTemplate()*, que recebe como parametros o *printresposta* e a *acao*, que é utilizada em algumas codicionais que para definir algumas propriedades dos inputs e quais botões devem aparecer, levando as suas respectivas funções, create, update e dalete.
+- As funções:
+```JavaScript
+const [modalIsOpen, setIsOpen] = useState(false);
+const [data, setData] = useState({})
+
+const [namevalue, setNamevalue] = useState()
+const [emailvalue, setEmailvalue] = useState()
+
+
+const openModal = () => {
+    setIsOpen(true);
+}
+
+const closeModal = () => {
+    setIsOpen(false)
+}
+
+const getName = (event) => setNamevalue(event.target.value)
+const getEmail = (event) => setEmailvalue(event.target.value)
+
+const getArray = (info) => {
+    const id = info.printresposta.id
+    const name = info.printresposta.name
+    const email = info.printresposta.email
+
+    setData({ id, name, email })
+    openModal()
+}
+
+const acao = params.acao
+```
+- O retorno:
+```JavaScript
+<button onClick={acao != 'create' ? () => getArray(params) : () => openModal()}>{acao}</button>
+    <Modal isOpen={modalIsOpen} onRequestClose={closeModal} data={data}>
+        <div>
+            <input className='input-name'
+                defaultValue={acao == 'update' || 'info' ? data.name : null}
+                onChange={acao == 'update' || 'create' ? getName : null}
+                disabled={acao == 'info' ? true : false}
+                hidden={acao == 'delete' ? true : false}
+            />
+
+            <input className='input-email'
+                defaultValue={acao == 'update' || 'info' ? data.email : null}
+                onChange={acao == 'update' || 'create' ? getEmail : null}
+                disabled={acao == 'info' ? true : false}
+                hidden={acao == 'delete' ? true : false}
+            />
+
+            <input className='input-id'
+                value={acao == 'update' || 'info' ? data.id : null}
+                hidden={data.id && acao != 'delete' ? false : true}
+                disabled/>
+                
+        </div>
+        <p hidden={acao == 'delete' ? false : true}>Tem certeza que deseja deletar este Usuario?</p>
+        <button
+            onClick={() => create(namevalue, emailvalue)}
+            hidden={acao == 'create' ? false : true}
+        >Criar Usuario</button>
+
+        <button
+            onClick={() => update(data, namevalue, emailvalue)}
+            hidden={acao == 'update' ? false : true}
+        >Atualizar Usuario</button>
+
+        <button
+            onClick={() => deletes(data)}
+            hidden={acao == 'delete' ? false : true}
+        >Deletar</button>
+
+        <button onClick={closeModal}>close</button>
+    </Modal>
+```
