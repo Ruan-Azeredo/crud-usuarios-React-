@@ -9,7 +9,6 @@ export default function IndexRow(params) {
             <div className={`
                 text-textColor text-3xl
             `}>{printresposta.name}</div>
-            {/* <div className="">{printresposta.email}</div> */}
         </div>
     )
 }
